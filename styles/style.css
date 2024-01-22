@@ -50,7 +50,7 @@ ul li:last-of-type {
   border: none;
 }
 
-li>div {
+.btn {
   color: var(--);
   font-weight: 700;
   color: var(--dark-purple);
@@ -58,6 +58,22 @@ li>div {
   align-items: center;
   justify-content: space-between;
   position: relative;
+}
+
+.btn:hover h2,
+.btn:active h2 {
+  color: var(--grayish-purple);
+  cursor: pointer;
+}
+
+.btn::before {
+  content: "";
+  width: 30px;
+  height: 30px;
+  background-image: url(../assets/images/icon-plus.svg);
+  position: absolute;
+  right: 0;
+  cursor: pointer;
 }
 
 li h2 {
@@ -68,27 +84,20 @@ blockquote {
   margin-inline: 0;
   color: var(--grayish-purple);
   line-height: 1.5rem;
-}
-
-.content img {
-  cursor: pointer;
-  min-width: 30px;
-  display: block;
-}
-
-blockquote {
-  background-color: var(--white);
-  max-height: 0;
+  position: relative;
+  height: 0;
   overflow: hidden;
-  transition: max-height 200ms ease;
+  transition: height 3s ease-in-out;
+  overflow-y: auto;
 }
 
-.minus-icon {
-  display: none;
-  position: absolute;
-  right: 0;
+.contentBx.active .btn::before {
+  background-image: url(../assets/images/icon-minus.svg);
 }
 
+.contentBx.active blockquote {
+  height: auto;
+}
 
 @media (max-width: 600px) {
   body {
@@ -96,7 +105,7 @@ blockquote {
   }
 
   .wrapper {
-    max-width: 430px;
+    max-width: 400px;
     padding: 0.5em;
   }
 
@@ -113,5 +122,9 @@ blockquote {
   ul {
     margin: 0;
     padding: 0;
+  }
+
+  h2 {
+    max-width: 70%;
   }
 }
